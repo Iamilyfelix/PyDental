@@ -38,8 +38,8 @@ while resposta != "0":
             os.system("cls")
             print("""
             
-                ┌────────────────────────────────────┐
-                │            Pacientes               │     
+                 ┌────────────────────────────────────┐
+                 │            Pacientes               │     
                 👥───────────────────────────────────👥
                 👥                                   👥
                 👥     [1] Cadastrar                 👥
@@ -49,7 +49,7 @@ while resposta != "0":
                 👥                                   👥
                 👥     [0] Voltar                    👥
                 👥                                   👥
-                └─────────────────👥─────────────────┘
+                 └─────────────────👥─────────────────┘
             
             """)
             
@@ -58,14 +58,14 @@ while resposta != "0":
             if respostaMod1 == "1":
                 os.system("cls")
                 print("""
-                ┌────────────────────────────────────┐
-                │        CADASTRAR PACIENTE          │
+                 ┌────────────────────────────────────┐
+                 │        CADASTRAR PACIENTE          │
                 👥───────────────────────────────────👥
                 👥                                   👥
                 👥      Informe os dados para        👥
                 👥      realizar o cadastro.         👥
                 👥                                   👥
-                └────────────────👥──────────────────┘
+                 └────────────────👥──────────────────┘
                 """)
 
                 cpfPaciente = input("🪪 CPF: ")
@@ -79,13 +79,13 @@ while resposta != "0":
                 #função cadastrarPaciente aqui
                 
                 print("""
-                ┌────────────────────────────────────┐
-                │           NOTIFICAÇÃO              │
+                 ┌────────────────────────────────────┐
+                 │           NOTIFICAÇÃO              │
                 🔔───────────────────────────────────🔔
                 🔔     Paciente cadastrado           🔔
                 🔔     com sucesso!                  🔔
                 🔔                                   🔔
-                └────────────────🔔──────────────────┘
+                 └────────────────🔔──────────────────┘
                 """)
             elif respostaMod1 == "2":
                 os.system("cls")
@@ -142,9 +142,9 @@ while resposta != "0":
                     print()
                 
                     print("""
-                    ┌────────────────────────────────────┐
-                    │       Digite os novos dados        │
-                    │       do paciente                  │
+                     ┌────────────────────────────────────┐
+                     │       Digite os novos dados        │
+                     │       do paciente                  │
                     ✏️───────────────────────────────────✏️
                         
                     """)
@@ -156,13 +156,13 @@ while resposta != "0":
                     pacientes[cpfBusca] = [nomeNovo, telefoneNovo, emailNovo]
                     
                     print("""
-                    ┌────────────────────────────────────┐
-                    │           NOTIFICAÇÃO              │
+                     ┌────────────────────────────────────┐
+                     │           NOTIFICAÇÃO              │
                     🔔───────────────────────────────────🔔
                     🔔     Dados editados com            🔔
                     🔔     sucesso!                      🔔
                     🔔                                   🔔
-                    └────────────────🔔──────────────────┘
+                     └────────────────🔔──────────────────┘
                     """)
                     
                     print(pacientes)
@@ -266,9 +266,8 @@ while resposta != "0":
                 telefoneDentista = input("📞 Telefone: ")
                 emailDentista = input("📧 E-mail: ")
                 
-                #função cadastrarDentista aqui 
-                
                 dentistas[cro] = [nomeDentista, telefoneDentista, emailDentista]
+                
                 print("Dentistas:", dentistas)  
                     
                 print("""
@@ -284,90 +283,136 @@ while resposta != "0":
             elif respostaMod2 == "2":
                 os.system("cls")
                 print("""
-                ┌────────────────────────────────────┐
-                │          BUSCAR DENTISTA           │
+                 ┌────────────────────────────────────┐
+                 │          BUSCAR DENTISTA           │
                 🔍───────────────────────────────────🔍
                 🔍                                   🔍
                 🔍     Informe o CRO do dentista     🔍
                 🔍                                   🔍
-                └─────────────────🔍─────────────────┘
+                 └─────────────────🔍─────────────────┘
                 """)
-                buscarDentista = input("🪪 CRO: ")
+                cpfBusca = input("🪪 CRO: ")
                 
-                #função buscarCro aqui
+                if cpfBusca in dentistas:
+                    print("👤 Nome: ", dentistas[cpfBusca][0])
+                    print("📞 Telefone: ", dentistas[cpfBusca][1])
+                    print("📧 E-mail: ", dentistas[cpfBusca][2])
+                    print()
+                    input("Tecle <ENTER> para continuar...")
+                else:
+                    print("""
+                         ┌────────────────────────────────────┐
+                         │           NOTIFICAÇÃO              │
+                        🔔───────────────────────────────────🔔
+                        🔔                                   🔔
+                        🔔      Dentista não encontrado      🔔
+                        🔔                                   🔔
+                         └────────────────🔔──────────────────┘
+                        """)
                 
             elif respostaMod2 == "3":
                 os.system("cls")
                 print("""
-                ┌────────────────────────────────────┐
-                │       ATUALIZAR DENTISTA           │
+                 ┌────────────────────────────────────┐
+                 │       ATUALIZAR DENTISTA           │
                 ✏️───────────────────────────────────✏️
                 ✏️      informe o CPF para           ✏️
                 ✏️      localizar o dentista         ✏️
                 ✏️                                   ✏️
-                └─────────────────✏️─────────────────┘
+                 └─────────────────✏️─────────────────┘
             """)
                 
-                buscarDentista = input("🪪 CPF: ")
+                buscarCpf = input("🪪 CPF: ")
                 
-                #função bucsar dentista fica aqui
-                #if existir dentista passe os novos dados e chamar função atualizar paciente
-                
-                print("""
-                ┌────────────────────────────────────┐
-                │       Digite os novos dados        │
-                │       do paciente                  │
-               ✏️───────────────────────────────────✏️
+                if buscarCpf in dentistas:
+                    print("DADOS ATUAIS DO DENTISTA")
+                    print("👤 Nome: ", dentistas[cpfBusca][0])
+                    print("📞 Telefone: ", dentistas[cpfBusca][1])
+                    print("📧 E-mail: ", dentistas[cpfBusca][2])
+                    print()
+                    print("""
+                     ┌────────────────────────────────────┐
+                     │       Digite os novos dados        │
+                     │       do dentista                  │
+                    ✏️───────────────────────────────────✏️
+                        
+                    """)
                     
-                """)
-                
-                nomeNovo = input("👤 Nome: ")
-                croNovo = input("🪪 CRO:")
-                telefoneNovo = input("📞 Telefone: ")
-                emailNovo = input("📧 E-mail: ")
-                
-                #função atualizar fica aqui 
-                
-                print("""
-                ┌────────────────────────────────────┐
-                │           NOTIFICAÇÃO              │
-                🔔───────────────────────────────────🔔
-                🔔     Dados atualizados com         🔔
-                🔔     sucesso!                      🔔
-                🔔                                   🔔
-                └────────────────🔔──────────────────┘
-                """)
+                    nomeNovo = input("👤 Nome: ")
+                    telefoneNovo = input("📞 Telefone: ")
+                    emailNovo = input("📧 E-mail: ")
+                    
+                    dentistas[cpfBusca] = [nomeNovo, telefoneNovo, emailNovo]
+                    
+                    print("""
+                     ┌────────────────────────────────────┐
+                     │           NOTIFICAÇÃO              │
+                    🔔───────────────────────────────────🔔
+                    🔔        Dados editados com         🔔
+                    🔔        sucesso!                   🔔
+                    🔔                                   🔔
+                     └────────────────🔔──────────────────┘
+                    """)
+                    
+                    print(dentistas)
+                    
+                else:
+                    print("""
+                         ┌────────────────────────────────────┐
+                         │           NOTIFICAÇÃO              │
+                        🔔───────────────────────────────────🔔
+                        🔔                                   🔔
+                        🔔      Dentista não encontrado      🔔
+                        🔔                                   🔔
+                         └────────────────🔔──────────────────┘
+                        """)
+                input("Tecle <ENTER> para continuar...")
             
             elif respostaMod2 == "4":
                 os.system("cls")
                 print("""
-                ┌────────────────────────────────────┐
-                │         EXCLUIR DENTISTA           │
+                 ┌────────────────────────────────────┐
+                 │         EXCLUIR DENTISTA           │
                 🗑️───────────────────────────────────🗑️
                 🗑️                                   🗑️
                 🗑️     Informe o CPF do dentista     🗑️
                 🗑️     que deseja excluir.           🗑️
                 🗑️                                   🗑️
-                └─────────────────🗑️─────────────────┘
+                 └─────────────────🗑️─────────────────┘
                 """)
 
-                cpf_excluir = input("🪪 CPF: ")
+                cpfExcluir = input("🪪 CPF: ")
                 
-                #função buscar cpf fica aqui
-                #if existir paciente função excluir é chamada
+                if cpfExcluir in dentistas:
+                    print("👤 Nome: ", dentistas[cpfExcluir][0])
+                    print("📞 Telefone: ", dentistas[cpfExcluir][1])
+                    print("📧 E-mail: ", dentistas[cpfExcluir][2])
+                    print()
+                    confirma = input("Tecle 's' para confirmar exclusão...")
+                    if confirma.lower() == 's':
+                        del dentistas[cpfExcluir]
+                        print("""
+                         ┌────────────────────────────────────┐
+                         │           NOTIFICAÇÃO              │
+                        🔔───────────────────────────────────🔔
+                        🔔     Dentista excluído             🔔
+                        🔔     com sucesso!                  🔔
+                        🔔                                   🔔
+                         └────────────────🔔──────────────────┘
+                        """)
+                        print()
+                        print("dentistas: ", dentistas)    #conferir exclusão
                 
-                #função excluir paciente fica aqui 
-                
-                print("""
-                ┌────────────────────────────────────┐
-                │           NOTIFICAÇÃO              │
-                🔔───────────────────────────────────🔔
-                🔔     Dentista excluído             🔔
-                🔔     com sucesso!                  🔔
-                🔔                                   🔔
-                └────────────────🔔──────────────────┘
-                """)
-            
+                    else:
+                        print("""
+                         ┌────────────────────────────────────┐
+                         │           NOTIFICAÇÃO              │
+                        🔔───────────────────────────────────🔔
+                        🔔                                   🔔
+                        🔔      Paciente não encontrado      🔔
+                        🔔                                   🔔
+                         └────────────────🔔──────────────────┘
+                        """)
                 
     elif resposta == "3":
         respostaMod3 = ""
@@ -375,8 +420,8 @@ while resposta != "0":
             os.system("cls")
             print("""
             
-            ┌────────────────────────────────────┐
-            │            Consultas               │      
+             ┌────────────────────────────────────┐
+             │            Consultas               │      
             📅───────────────────────────────────📅
             📅                                   📅
             📅     [1] Cadastrar                 📅
@@ -387,7 +432,7 @@ while resposta != "0":
             📅                                   📅
             📅     [0] Voltar                    📅
             📅                                   📅
-            └─────────────────📅─────────────────┘
+             └─────────────────📅─────────────────┘
             """)
             respostaMod3 = input("👉 Escolha uma opção: ")
             
