@@ -1,5 +1,7 @@
 import os
 resposta = ""
+
+'''
 pacientes = {
     '123.456.789-10' : ["Homer Simpson", "99999-9999", "homer@springfield.com"],
     '234.456.456-71' : ["Marge Simpson", "88888-8888", "marge@springfield.com"]
@@ -9,6 +11,85 @@ dentistas = {
     '22222222222': ['Elizabeth Hoover', '(83) 99900-0111', 'hoover@springfield.com']
 }
 consultas = {}
+'''
+pacientes = {}
+try:
+    arqPacientes = open("pacientes.csv", "rt", encoding="utf-8")
+    for linha in arqPacientes:
+        linha = linha.strip()
+        if linha:
+            campos = linha.split(",")
+            cpfPaciente = campos[0]
+            nomePaciente = campos[1]
+            telefonePaciente = campos[2]
+            emailPaciente = campos[3]
+            
+            pacientes[cpfPaciente] = [nomePaciente, telefonePaciente, emailPaciente]
+    arqPacientes.close()
+except:
+    pacientes = {
+    '123.456.789-10' : ["Homer Simpson", "99999-9999", "homer@springfield.com"],
+    '234.456.456-71' : ["Marge Simpson", "88888-8888", "marge@springfield.com"]
+    }
+    arqPacientes = open("pacientes.csv", "wt", encoding="utf-8")
+    
+    for cpfPaciente, dados in pacientes.items():
+        arqPacientes.write(f"{cpfPaciente},{dados[0]},{dados[1]},{dados[2]}\n")
+    arqPacientes.close()
+
+
+
+dentistas = {}
+try:
+    arqDentistas = open("dentistas.csv", "rt", encoding="utf-8")
+    for linha in arqDentistas:
+        linha = linha.strip()
+        if linha:
+            campos = linha.split(",")
+            cro = campos[0]
+            nomeDentista = campos[1]
+            telefoneDentista = campos[2]
+            emailDentista = campos[3]
+            
+            dentistas[cro] = [nomeDentista, telefoneDentista, emailDentista]
+    arqDentistas.close()
+
+except:
+    dentistas = {
+    '11111111111': ['Edna Krabappel', '(84) 99988-8777', 'krabappel@springfield.com'], 
+    '22222222222': ['Elizabeth Hoover', '(83) 99900-0111', 'hoover@springfield.com']
+}
+    arqDentistas = open("dentistas.csv", "wt", encoding="utf-8")
+    for cro, dados in dentistas.items():
+        arqDentistas.write(f"{cro},{dados[0]},{dados[1]},{dados[2]}\n")
+    arqDentistas.close()
+    
+consultas = {}
+try:
+    arqConsultas = open("consultas.csv", "rt", encoding="utf-8")
+    for linha in arqConsultas:
+        linha = linha.strip()
+        if linha:
+            campos = linha.split(",")
+            cpfPaciente = campos[0]
+            cro = campos[1]
+            data = campos[2]
+            hora = campos[3]
+            status = campos[4]
+            
+            dentistas[cpfPaciente] = [cro, data, hora, status]
+    arqConsultas.close()
+
+except:
+    consultas = {
+    '123': ['7474', '24/28/2025', '14:00','realizada'], 
+    '345': ['7575', '16/08/2026', '15:00','não realizada']
+}
+    arqConsultas = open("consultas.csv", "wt", encoding="utf-8")
+    for cro, dados in consultas.items():
+        arqConsultas.write(f"{cpfPaciente},{dados[0]},{dados[1]},{dados[2]},{dados[3]},\n")
+    arqConsultas.close()
+    
 resposta = ""
 while resposta != "0":
     os.system("cls")
@@ -714,13 +795,13 @@ while resposta != "0":
                 os.system("cls")
                 print("""
                     
-                ┌────────────────────────────────────┐
-                │               Erro                 │
+                 ┌────────────────────────────────────┐
+                 │               Erro                 │
                 ❌───────────────────────────────────❌
                 ❌                                   ❌
                 ❌     Digite uma opção válida!      ❌
                 ❌                                   ❌
-                └─────────────────❌─────────────────┘
+                 └─────────────────❌─────────────────┘
                 """)
             input()
     elif resposta == "5":
@@ -771,5 +852,20 @@ while resposta != "0":
          └─────────────────❌─────────────────┘
         """)
         
+arqPacientes = open("pacientes.csv", "wt", encoding="utf-8")
+    
+for cpfPaciente, dados in pacientes.items():
+    arqPacientes.write(f"{cpfPaciente},{dados[0]},{dados[1]},{dados[2]}\n")
+arqPacientes.close()
+
+
+arqDentistas = open("dentistas.csv", "wt", encoding="utf-8")
+for cro, dados in dentistas.items():
+    arqDentistas.write(f"{cro},{dados[0]},{dados[1]},{dados[2]}\n")
+arqDentistas.close()
         
         
+arqConsultas = open("consultas.csv", "wt", encoding="utf-8")
+for cro, dados in consultas.items():
+    arqConsultas.write(f"{cpfPaciente},{dados[0]},{dados[1]},{dados[2]},{dados[3]},\n")
+arqConsultas.close()
